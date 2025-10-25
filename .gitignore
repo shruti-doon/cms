@@ -16,11 +16,7 @@ venv/
 *.db
 *.sqlite3
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
+
 
 # OS
 .DS_Store
