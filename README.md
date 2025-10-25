@@ -53,16 +53,12 @@
 - **Analytic Subsystem:** In this subsystem, both the user and the manager can analyze the overall money they have spent and the overall profit/loss they are in.
     - **User:** The user can see the profits/losses he has made on the casinos he went to based on a particular day and in terms of usability, easily keep track of his overall expenses in different casinos.
     
-    ![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled.png)
     
     - **Manager**:
         - A manager can analyze all the casinos under him and see the overall profit/loss he has made (on a daily basis graphically). He can analyze which casino is making more profit and what’s the daily trend of the casinos (implying the season when he expects the most profits). He can also easily check any abnormal patterns (for instance a casino going into loss drastically or consistently) and take measures.
             
-            ![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%201.png)
             
         - Within every casino as well, the manager can analyze all the profits/losses made within all the game tables in that casino as well which can be used to analyze which game tables are bringing him more profits so that he can increase those particular kinds while creating a new casino.
-        
-        ![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%202.png)
         
 
 ---
@@ -108,19 +104,13 @@
 - **Adapter Pattern (Implemented):**
     
     We have a class Currency Converter defined which is used to convert the USD$ to Indian Rupees. The Class PaymentStrategyAdapter is the adapter class.
-    
-
-![16.png](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/16.png)
-
+  
 In the process_payment function if the payment method is cash we use the **CashPayment** as paymentcontext. If the currency used is USD$ , we wrap the adapter **PaymentStrategyAdpater** around the payment context(**CashPayment**) . When we call pay method it directs to the method pay defined in the adapter which first converts the USD dollars to Indian Rupees and then that pay function is executed which is done in INR case.
 
-![15.png](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/15.png)
 
 - **Strategy Pattern (Implemented):** To handle different payment methods flexibly.
     
     The strategy pattern was implemented between cash, card and UPI
-    
-    ![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%203.png)
     
     In our CMS, we've seamlessly integrated a robust payment strategy system that enhances user flexibility and convenience when conducting transactions within our platform. Leveraging the versatile `Strategy Pattern`, we've crafted an adaptable architecture that empowers users to seamlessly choose their preferred payment methods while ensuring scalability and maintainability of our payment system.
     
@@ -128,34 +118,10 @@ In the process_payment function if the payment method is cash we use the **CashP
     
     Behind the scenes, when a user selects a payment method, our system dynamically applies the corresponding payment strategy to execute the transaction seamlessly. For instance, when a user opts for a card payment, our system utilizes the Card Payment Strategy, facilitating secure and efficient card-based transactions. Similarly, for UPI payments, the UPI Payment Strategy seamlessly handles the transaction process, providing users with a hassle-free experience.
     
-    PaymentStrategy.py
-    
-    ![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%204.png)
-    
-    PaymentContext.py
-    
-    ![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%205.png)
-    
-    ConcreteStrategy.py
-    
-    ![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%206.png)
-    
-    TokenWalletResource.py
-    
-    ![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%207.png)
-    
-    ![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%208.png)
-    
-    Frontend request
-    
-    ![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%209.png)
     
     Furthermore, our payment strategy system promotes code reusability and maintainability by encapsulating payment method-specific logic within separate strategy classes. This modular approach simplifies code management and facilitates efficient testing and debugging.
     
 - **Observer Pattern (Implemented):** For notification to subscribed users.
-    
-    ![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2010.png)
-    
     In our CMS, we have integrated a feature that allows users to subscribe to or unsubscribe from specific casinos. This subscription system allows users to receive updates and notifications about the casinos they are interested in. We used the `Observer Pattern` to implement this functionality
     
     When a user subscribes to a casino, they will begin to receive notifications from the casino manager. These notifications can include updates about new game tables, changes in staff, or special events and promotions. This feature enhances the user experience by keeping them connected and informed about their favorite casinos.
@@ -164,92 +130,61 @@ In the process_payment function if the payment method is cash we use the **CashP
     
     The process of sending notifications is handled through the `/notify` API. When a manager sends a notification, the backend code retrieves a list of all users subscribed to the casino and then sends the notification to each of these users. The notification is then stored in the database and can be viewed by the user at any time on their "Notifications" page.
     
-    ![call from frontend](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2011.png)
-    
     call from frontend
     
-    ![SubscriptionDao](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2012.png)
     
     SubscriptionDao
     
-    ![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2013.png)
-    
-    ![backend receives the call in CasinoResource.py](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2014.png)
     
     backend receives the call in CasinoResource.py
     
-    ![add/remove subscribers from a casino](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2015.png)
     
     add/remove subscribers from a casino
     
-    ![send notifications function in Casino class](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2016.png)
     
     send notifications function in Casino class
-    
-    ![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2017.png)
-    
-    ![adds the notification to db.](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2018.png)
+   
     
     adds the notification to db.
     
     User notifications are fetched on the `/get_user_notifications` API, which uses the get_user_notifications function of the user_dao, converts it to a notifs array, and returns to the frontend. The frontend is shown in the image above.
     
-    ![Fetch all user notifications](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2019.png)
-    
     Fetch all user notifications
-    
-    ![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2020.png)
-    
-    ![backend receives the request in UserResource.py ](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2021.png)
     
     backend receives the request in UserResource.py 
     
-    ![User  interface for viewing notifications](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2022.png)
     
     User  interface for viewing notifications
     
 - **Builder Pattern (Implemented):**
     
     We have implemented Builder Pattern for creation of casino. Below is the directory structure which is in the lines of Builder Pattern that contains a Director to control the flow of creation , an interface which is implemented by different concrete builders (they have different implementations of the same function defined in the interface).
-    
-
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2023.png)
 
 In the **CasinoDirector.py** implementation of different types of casinos (there are 4 types of casinos) are present which builds the casinos according to pre defined conditions.
 
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2024.png)
 
 Below is the getResult function to return the casino built that is required by the user 
 
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2025.png)
 
 [**CasinoBuilder.py**](http://CasinoBuilder.py) file defines the functions that should be implemented by concrete builders.(here we have only one builder but multiple builders can be made and they should inherit the common interface).
 
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2026.png)
 
 **ConcreteCasinoBuilder.py** inherits the CasinoBuilder class where all the implementations of gametable, bar, tokencounter creation is present.
 
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2027.png)
 
 [**CasinoResource.py](http://CasinoResource.py)** contains function add_casino which takes the request at the frontedd path ‘/casino/add’ and creates a casino using Builder [pattern.](http://pattern.It)This is done by retrieving the no of different gametables the user wants and first assigning staff members to them . A director is then made which handles the construction of the casino and finally we return the CasinoId.
 
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2028.png)
 
 This returns the staffid(s)  for the number of gametables that the user wants .
 
-![11.png](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/11.png)
 
 This function is defined in **StaffDao.py** which updates the id of the staff so to assign it to a particular gametable.
 
-![13.png](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/13.png)
 
 This function is defined in [**GameTableDao.py](http://GameTableDao.py)** which inserts an entry of a gametable into the gametable Table 
 
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2029.png)
-
 These functions are defined in **[CasinoDao.py](http://CasinoDao.py)** which adds a token counter and a bar into the corresponding tables.
 
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2030.png)
 
 This is the flow of the creation of Casino using builder pattern
 
@@ -263,11 +198,8 @@ This is the flow of the creation of Casino using builder pattern
 
 ### Layered Architectural Pattern
 
-![100.jpeg](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/100.jpeg)
 
 ### MicroService Architectural Pattern
-
-![101.jpeg](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/101.jpeg)
 
 ---
 
@@ -288,41 +220,10 @@ This is the flow of the creation of Casino using builder pattern
     3. Data Access: DAO files
     4. Persistence layers: Database (.db file - using SQLite3)
 
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2031.png)
-
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2032.png)
-
 - **Microservices Architecture:** Architectural approach to build software applications as a collection of small, independent services, each focused on a specific business function and communicating via APIs.
     
     We have a middleman which is running on port 5000. Basically all the redirects  that the frontend does to the backend is directed to the functions defined in the middleman.
     
-    ![21.png](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/21.png)
-    
-    This is a snippet of function defined to handle get request at the path ‘/wallet/balance’ which basically redirects it into the microservice which handles payment functionality and return the response.
-    
-    ![23.png](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/23.png)
-    
-    Similarly below is the function to handle the post request at the path ‘/casino/add’ which is redirected to the microservice which handles the non payment functionality.
-    
-    ![22.png](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/22.png)
-    
-    The other subsystem’s microservice is running on the port 5001 
-    
-    ![24.png](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/24.png)
-    
-    The payment microservice is running on the port 8080.
-    
-    ![26.png](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/26.png)
-    
-    This is the directory structure
-    
-    ![25.png](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/25.png)
-    
-    ![3.jpeg](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/3.jpeg)
-    
-    ![2.jpeg](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/2.jpeg)
-    
-    ![1.jpeg](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/1.jpeg)
     
 
 ## Comparison between layered and microservice architecture:
@@ -333,9 +234,6 @@ Quality Matrix used: Response Time and Throughput
 
 ### Layered Architectural Pattern
 
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2033.png)
-
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2034.png)
 
  We did for 100 users ramping up at 5 users/seconds.
 
@@ -351,13 +249,8 @@ Quality Matrix used: Response Time and Throughput
 2. The median response time for all endpoints is 33 ms, while the average response time is 146.54 ms.
 3. The aggregated current RPS is 60.7, indicating the total throughput of the system.
 
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2035.png)
-
 ### Microservice Architectural Pattern
 
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2036.png)
-
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2037.png)
 
 1. **Response Time Statistics**:
     - The response time statistics provide insights into the distribution of response times across percentiles for each endpoint.
@@ -368,7 +261,6 @@ Quality Matrix used: Response Time and Throughput
     - Endpoints related to casino information and wallet operations exhibit relatively lower to moderate response times, indicating efficient performance for these functionalities.
     - The aggregated response time statistics provide an overview of the overall performance of the application, with response times ranging from low to high across different percentiles.
 
-![Untitled](Project%203%20Deliverables%20c8e17e3510df4e17b8e8d386f398d687/Untitled%2038.png)
 
 - **IN-DEPTH ANALYSIS:**
     
@@ -444,12 +336,7 @@ More different kinds of Game tables and Casinos can be created accordingly.
 
 1. The user is supposed to Exit casino while moving out of the casino so that he can cash out the money and get it back.
 
-### Our Github Repo link:
 
-[https://github.com/rayaankhan/Project-3-SE](https://github.com/rayaankhan/Project-3-SE)
-
-The `yatharth` branch contains the code for Layered Architectural Pattern
-The `microservice` branch has the code for Microservice Architectural Pattern
 
 
 ### To run the code
